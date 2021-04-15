@@ -2,9 +2,10 @@
   "dependencies": {
     "express": "^4.17.1"
   },
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js -e js,css,html,jpg,jpeg,png,scss"
+    "start": "node app.js",
+    "dev": "nodemon app.js -e js,css,html,jpg,jpeg,png,scss"
   },
   "name": "collidinggalaxies",
   "version": "1.0.0",
@@ -16,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/FatCatCoder/collidinggalaxies.git"
   },
-  "author": "",
+  "author": "FatCatCoder, CollidingGalaxies, Christain Claudeaux",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FatCatCoder/collidinggalaxies/issues"
