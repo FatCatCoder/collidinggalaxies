@@ -1,10 +1,36 @@
 const express = require('express');
 const app = express();
+const port = 3000;
 
 
 
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/views', express.static(process.cwd() + '/views'));
+
+app.get('/', (req, res) => {
+  res.sendFile(process.cwd() + '/views/index.html')
+});
+
+app.get('/galleries', (req, res) => {
+  res.sendFile(process.cwd() + '/views/galleries.html')
+});
+
+app.get('/galleries/people', (req, res) => {
+  res.sendFile(process.cwd() + '/views/galleries/people.html')
+});
+
+app.get('/galleries/web', (req, res) => {
+  res.sendFile(process.cwd() + '/views/galleries/web.html')
+});
+
+app.get('/music', (req, res) => {
+  res.sendFile(process.cwd() + '/views/music.html')
+});
+
+app.get('/writing', (req, res) => {
+  res.sendFile(process.cwd() + '/views/writing.html')
+});
+
 
 app.route('/_api/package.json')
   .get(function(req, res, next) {
@@ -14,53 +40,6 @@ app.route('/_api/package.json')
       res.type('txt').send(data.toString());
     });
   });
-
-
-app.route('/')
-    .get(function(req, res) {
-		  res.sendFile(process.cwd() + '/views/homepage.html');
-    })
-
-
-app.route('/drawAppPortfolio')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/drawAppPortfolio.html');
-    })
-
-app.route('/collidingGalaxiesPhotographyBlogWebsite')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/collidingGalaxiesPhotographyBlogWebsite.html');
-    })
-
-app.route('/collidingGalaxiesPhotographyBlogWebsite/galleries')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/collidingGalaxiesWebsite/galleries.html');
-    })
-
-app.route('/collidingGalaxiesPhotographyBlogWebsite/music')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/collidingGalaxiesWebsite/music.html');
-    })
-
-app.route('/collidingGalaxiesPhotographyBlogWebsite/writing')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/collidingGalaxiesWebsite/writing.html');
-    })
-
-app.route('/collidingGalaxiesPhotographyBlogWebsite/galleries/boy')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/collidingGalaxiesWebsite/galleries/boy.html');
-    })
-
-app.route('/collidingGalaxiesPhotographyBlogWebsite/galleries/room')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/collidingGalaxiesWebsite/galleries/room.html');
-    })
-
-app.route('/collidingGalaxiesPhotographyBlogWebsite/galleries/web')
-    .get(function(req, res) {
-      res.sendFile(process.cwd() + '/views/collidingGalaxiesWebsite/galleries/web.html');
-    })
 
 
 
@@ -73,6 +52,6 @@ app.use(function(err, req, res, next) {
   }  
 })
 
-app.listen(process.env.PORT, function () {
+app.listen(port, function () {
   console.log('Node.js listening ...');
 });
